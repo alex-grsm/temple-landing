@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import legacy from '@vitejs/plugin-legacy';
+import htmlMinifier from 'vite-plugin-html-minifier-terser';
 // import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
@@ -28,6 +29,13 @@ export default defineConfig({
         entryFileNames: 'assets/js/[name].js',
       },
     },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   },
   css: {
     postcss: './postcss.config.js',
@@ -49,6 +57,9 @@ export default defineConfig({
     }),
     legacy({
         targets: ['defaults', 'not IE 11'],
+    }),
+    htmlMinifier({
+        minify: true
     }),
     // visualizer(),
   ],
