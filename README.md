@@ -1,2 +1,2 @@
 # Temple Landing
-![preview img](/preview.png)
+![preview img](public/preview.png)
